@@ -1,0 +1,21 @@
+{
+  "name": "scrapelab-puppeteer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "browsers": "puppeteer browsers install chrome",
+    "test": "node --test tests/node/*.test.mjs",
+    "test:e2e": "node --test --test-concurrency=1 tests/e2e/*.test.mjs",
+    "dev": "node init && concurrently -k -n web,queue \"php artisan serve --host=127.0.0.1 --port=8001\" \"php artisan queue:work --tries=1 --timeout=210\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "dependencies": {
+    "puppeteer": "^25.0.0",
+    "ipaddr.js": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}
